@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCamera(View view){
-        Intent intent = new Intent("com.example.dsanikidze.trouvetontram.CameraActivity");
+        boolean needsGeo = true;
+        Intent intent = new Intent("com.example.dsanikidze.trouvetontram.SampleCamActivity");
+
         startActivity(intent);
     }
 /*

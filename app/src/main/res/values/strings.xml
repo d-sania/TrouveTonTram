@@ -1,11 +1,31 @@
 <resources>
-    <string name="app_name">Trouve Ton Tram</string>
+    <string name="app_name">"Trouve Ton Tram"</string>
     <string name="action_settings">Settings</string>
 
     <string name="btn_itineraire">"Trouver un itinéraire"</string>
-    <string name="btn_activer_ra">"Trouver un arrêt de tram grâce à la Réalité Augmentée"</string>
+    <string name="btn_activer_ra">"Trouver un arrêt de tram ou de bus grâce à la Réalité Augmentée"</string>
     <string name="title_activity_camera">CameraActivity</string>
 
     <string name="arrets_tpg_xml">http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops?key=6ad72ea0-9fcc-11e5-bb97-0002a5d5c51b</string>
-    <string name="départs_tpg_xml">http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures?key=6ad72ea0-9fcc-11e5-bb97-0002a5d5c51b&stopCode=xxxx</string>
+    <string name="departs_tpg_xml">http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures?key=6ad72ea0-9fcc-11e5-bb97-0002a5d5c51b</string>
+
+
+    <string name="main_title_urlLauncher">Launch World via url</string>
+    <string name="compass_accuracy_low">Please re-calibrate compass by waving your device in a figure 8 motion.</string>
+    <string name="location_fetching">Trying to find out where you are</string>
+    <string name="device_unsupported">This device is not supported</string>
+    <string name="videosrawables_fallback">VideoDrawables are rendered fullscreen on this device</string>
+    <string name="urllauncher_menu_clear_history">Clear history</string>
+    <string name="urllauncher_button_launch"> Launch </string>
+    <string name="poi_detail_title">Place Details</string>
+    <string name="urllauncher_hint_textfield">http://</string>
+    <string name="urllauncher_default_value_textfield">http://</string>
+    <string name="poi_name">Name</string>
+    <string name="poi_description">Description</string>
+    <string name="poi_id">ID</string>
+    <string name="title_activity_sample1_poi_detail">Sample 5.1 POI Detail</string>
+    <string name="footer">Sample App</string>
+
+
+
 </resources>
