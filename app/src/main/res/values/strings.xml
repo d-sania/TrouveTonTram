@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Trouve Ton Tram</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="btn_itineraire">"Trouver un itinéraire"</string>
+    <string name="btn_activer_ra">"Trouver un arrêt de tram grâce à la Réalité Augmentée"</string>
+    <string name="title_activity_camera">CameraActivity</string>
+
+    <string name="arrets_tpg_xml">http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops?key=6ad72ea0-9fcc-11e5-bb97-0002a5d5c51b</string>
+    <string name="départs_tpg_xml">http://prod.ivtr-od.tpg.ch/v1/GetNextDepartures?key=6ad72ea0-9fcc-11e5-bb97-0002a5d5c51b&stopCode=xxxx</string>
+</resources>
