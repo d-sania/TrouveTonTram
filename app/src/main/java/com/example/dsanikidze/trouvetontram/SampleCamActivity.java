@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView;
@@ -45,6 +46,9 @@ import com.example.dsanikidze.trouvetontram.R;
 
 public class SampleCamActivity extends AbstractArchitectCamActivity {
 
+    public static final String ACTIVITY_TITLE_STRING = "Trouve ton arrêt!";
+    public static final String ACTIVITY_ARCHITECT_WORLD_URL = "TrouveTonTram/index.html";
+
     /**
      * last time the calibration toast was shown, this avoids too many toast shown when compass needs calibration
      */
@@ -56,12 +60,12 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 
     @Override
     public String getARchitectWorldPath() {
-        return "file://assets/TrouveTonTram/index.html";
+        return ACTIVITY_ARCHITECT_WORLD_URL;
     }
 
     @Override
     public String getActivityTitle() {
-        return "Trouve ton arrêt!";
+        return ACTIVITY_TITLE_STRING;
     }
 
     @Override
@@ -95,8 +99,14 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 
     @Override
     public ArchitectView.ArchitectUrlListener getUrlListener() {
-        return new ArchitectView.ArchitectUrlListener() {
+        return new ArchitectUrlListener() {
 
+            @Override
+            public boolean urlWasInvoked(String uriString) {
+                Uri invokedUri = Uri.parse(uriString);
+                Log.i("urlWasInvoked", uriString);
+                return true;}
+/*
             @Override
             public boolean urlWasInvoked(String uriString) {
                 Uri invokedUri = Uri.parse(uriString);
@@ -128,7 +138,7 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
                 }
                 return true;
             }
-        };
+        }
     }
 
     @Override
@@ -140,9 +150,11 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
                 } else {
                     Toast.makeText(this, "Please allow access to external storage, otherwise the screen capture can not be saved.", Toast.LENGTH_SHORT).show();
                 }
-            }
-        }
-    }
+            }*/
+
+
+
+    };}
 
     @Override
     public ILocationProvider getLocationProvider(final LocationListener locationListener) {
@@ -169,7 +181,7 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
     protected StartupConfiguration.CameraPosition getCameraPosition() {
         return StartupConfiguration.CameraPosition.DEFAULT;
     }
-
+/*/
     protected void saveScreenCaptureToExternalStorage(Bitmap screenCapture) {
         if ( screenCapture != null ) {
             // store screenCapture into external cache directory
@@ -204,5 +216,5 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
                 });
             }
         }
-    }
+    }*/
 }

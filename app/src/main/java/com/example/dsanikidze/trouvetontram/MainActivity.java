@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //OnClickButtonListener();
+        this.bouton = (Button)this.findViewById(R.id.button2);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -33,18 +35,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCamera(View view){
-        boolean needsGeo = true;
-        Intent intent = new Intent("com.example.dsanikidze.trouvetontram.SampleCamActivity");
-
+        Intent intent = new Intent(this, SampleCamActivity.class);
         startActivity(intent);
     }
+
 /*
     public void OnClickButtonListener(){
         bouton = (Button)findViewById(R.id.button2);
         bouton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("com.example.dsanikidze.trouvetontram.CameraActivity");
+                Intent intent = new Intent("com.example.dsanikidze.trouvetontram.SampleCamActivity");
                         startActivity(intent);
             }
         });
