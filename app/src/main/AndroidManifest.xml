@@ -42,16 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--      <activity
-                  android:name=".CameraActivity"
-                  android:label="@string/title_activity_camera"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:configChanges="screenSize|orientation">
-                  <intent-filter>
-                      <action android:name="com.example.dsanikidze.trouvetontram.SampleCamActivity"/>
-                      <category android:name="android.intent.category.DEFAULT"/>
-                  </intent-filter>
-              </activity>*/-->
 
         <!-- poi detail screen -->
         <activity android:name="com.example.dsanikidze.trouvetontram.SamplePoiDetailActivity"/>

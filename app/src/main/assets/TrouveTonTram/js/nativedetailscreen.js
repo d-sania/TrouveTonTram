@@ -1,6 +1,8 @@
 // information about server communication. This sample webservice is provided by Wikitude and returns random dummy places near given location
 var ServerInformation = {
+//todo vérifier poidataserver des tpg
 	POIDATA_SERVER: "https://example.wikitude.com/GetSamplePois/",
+	//POIDATA_SERVER: "http://prod.ivtr-od.tpg.ch/v1/GetPhysicalStops.json",
 	POIDATA_SERVER_ARG_LAT: "lat",
 	POIDATA_SERVER_ARG_LON: "lon",
 	POIDATA_SERVER_ARG_NR_POIS: "nrPois"
@@ -164,8 +166,11 @@ var World = {
 	},
 
 	// screen was clicked but no geo-object was hit
+	// todo voir pourquoi ça ne marche pas
 	onScreenClick: function onScreenClickFn() {
-		// you may handle clicks on empty AR space too
+		if (World.currentMarker) {
+               World.currentMarker.setDeselected(World.currentMarker);
+            }
 	},
 
 	// returns distance in meters of placemark with maxdistance * 1.1
@@ -177,7 +182,7 @@ var World = {
 		// use distanceToUser to get max-distance
 		var maxDistanceMeters = World.markerList[0].distanceToUser;
 
-		// return maximum distance times some factor >1.0 so ther is some room left and small movements of user don't cause places far away to disappear
+		// return maximum distance times some factor >1.0 so there is some room left and small movements of user don't cause places far away to disappear
 		return maxDistanceMeters * 1.1;
 	},
 
@@ -281,8 +286,10 @@ var World = {
 		World.isRequestingData = true;
 		World.updateStatusMessage('Requesting places from web-service');
 
+	//TODO MODIFIER LES ARGUMENTS DE L'URL EN FONCTION DES TPG
 		// server-url to JSON content provider
 		var serverUrl = ServerInformation.POIDATA_SERVER + "?" + ServerInformation.POIDATA_SERVER_ARG_LAT + "=" + lat + "&" + ServerInformation.POIDATA_SERVER_ARG_LON + "=" + lon + "&" + ServerInformation.POIDATA_SERVER_ARG_NR_POIS + "=20";
+		//var serverUrl = ServerInformation.POIDATA_SERVER + "?" + "latitude" + "=" + lat + "&" + "longitude" + "=" + lon + "&" + "key=6ad72ea0-9fcc-11e5-bb97-0002a5d5c51b";
 
 		var jqxhr = $.getJSON(serverUrl, function(data) {
 				World.loadPoisFromJsonData(data);

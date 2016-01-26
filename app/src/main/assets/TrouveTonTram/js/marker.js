@@ -1,5 +1,5 @@
-var kMarker_AnimationDuration_ChangeDrawable = 500;
-var kMarker_AnimationDuration_Resize = 1000;
+var kMarker_AnimationDuration_ChangeDrawable = 4000;
+var kMarker_AnimationDuration_Resize = 4000;
 
 function Marker(poiData) {
 
@@ -18,9 +18,9 @@ function Marker(poiData) {
     var markerLocation = new AR.GeoLocation(poiData.latitude, poiData.longitude, poiData.altitude);
 
     // create an AR.ImageDrawable for the marker in idle state
-    this.markerDrawable_idle = new AR.ImageDrawable(World.markerDrawable_idle, 2.5, {
+    this.markerDrawable_idle = new AR.ImageDrawable(World.markerDrawable_idle, 3.7, {
         zOrder: 0,
-        opacity: 1.0,
+        opacity: 0.6,
         /*
             To react on user interaction, an onClick property can be set for each AR.Drawable. The property is a function which will be called each time the user taps on the drawable. The function called on each tap is returned from the following helper function defined in marker.js. The function returns a function which checks the selected state with the help of the variable isSelected and executes the appropriate function. The clicked marker is passed as an argument.
         */
@@ -28,16 +28,17 @@ function Marker(poiData) {
     });
 
     // create an AR.ImageDrawable for the marker in selected state
-    this.markerDrawable_selected = new AR.ImageDrawable(World.markerDrawable_selected, 2.5, {
+    this.markerDrawable_selected = new AR.ImageDrawable(World.markerDrawable_selected, 3.7, {
         zOrder: 0,
         opacity: 0.0,
         onClick: null
     });
 
     // create an AR.Label for the marker's title 
-    this.titleLabel = new AR.Label(poiData.title.trunc(10), 1, {
+    this.titleLabel = new AR.Label(poiData.title.trunc(20), 1.2, {
         zOrder: 1,
-        offsetY: 0.55,
+        offsetY: 1.00,
+
         style: {
             textColor: '#ffffff',
             fontStyle: AR.CONST.FONT_STYLE.BOLD
@@ -45,12 +46,13 @@ function Marker(poiData) {
     });
 
     // create an AR.Label for the marker's description
-    this.descriptionLabel = new AR.Label(poiData.description.trunc(15), 0.8, {
+    this.descriptionLabel = new AR.Label(poiData.description.trunc(25), 0.8, {
         zOrder: 1,
-        offsetY: -0.55,
+        offsetY: -0.50,
         style: {
             textColor: '#ffffff'
         }
+
     });
 
     /*
@@ -80,7 +82,7 @@ function Marker(poiData) {
         horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.CENTER,
         opacity: 0.8,
         style: {
-            fillColor: "#0066ff"
+            fillColor: "#fe5900"
         }
     });
 
@@ -146,6 +148,7 @@ Marker.prototype.setSelected = function(marker) {
 
     if (marker.animationGroup_selected === null) {
 
+
         // create AR.PropertyAnimation that animates the opacity to 0.0 in order to hide the idle-state-drawable
         var hideIdleDrawableAnimation = new AR.PropertyAnimation(marker.markerDrawable_idle, "opacity", null, 0.0, kMarker_AnimationDuration_ChangeDrawable);
         // create AR.PropertyAnimation that animates the opacity to 1.0 in order to show the selected-state-drawable
@@ -184,8 +187,11 @@ Marker.prototype.setSelected = function(marker) {
 
     marker.markerObject.drawables.radar = marker.radardrawablesSelected;
 
+
+
     // starts the selected-state animation
     marker.animationGroup_selected.start();
+
 };
 
 Marker.prototype.setDeselected = function(marker) {
