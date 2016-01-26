@@ -56,7 +56,7 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 
     protected Bitmap screenCapture = null;
 
-    private static final int WIKITUDE_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 3;
+    //private static final int WIKITUDE_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 3;
 
     @Override
     public String getARchitectWorldPath() {
@@ -98,15 +98,9 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
     }
 
     @Override
-    public ArchitectView.ArchitectUrlListener getUrlListener() {
+    public ArchitectUrlListener getUrlListener() {
         return new ArchitectUrlListener() {
 
-            @Override
-            public boolean urlWasInvoked(String uriString) {
-                Uri invokedUri = Uri.parse(uriString);
-                Log.i("urlWasInvoked", uriString);
-                return true;}
-/*
             @Override
             public boolean urlWasInvoked(String uriString) {
                 Uri invokedUri = Uri.parse(uriString);
@@ -122,8 +116,8 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
                 }
 
                 // pressed snapshot button. check if host is button to fetch e.g. 'architectsdk://button?action=captureScreen', you may add more checks if more buttons are used inside AR scene
-                else if ("button".equalsIgnoreCase(invokedUri.getHost())) {
-                    SampleCamActivity.this.architectView.captureScreen(ArchitectView.CaptureScreenCallback.CAPTURE_MODE_CAM_AND_WEBVIEW, new ArchitectView.CaptureScreenCallback() {
+      /*          else if ("button".equalsIgnoreCase(invokedUri.getHost())) {
+                    SampleCamActivity.this.architectView.captureScreen(ArchitectView.CaptureScreenCallback.CAPTURE_MODE_CAM_AND_WEBVIEW, new CaptureScreenCallback() {
 
                         @Override
                         public void onScreenCaptured(final Bitmap screenCapture) {
@@ -135,13 +129,13 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
                             }
                         }
                     });
-                }
+                }*/
                 return true;
             }
-        }
+        };
     }
 
-    @Override
+  /*  @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case WIKITUDE_PERMISSIONS_REQUEST_EXTERNAL_STORAGE: {
@@ -150,11 +144,9 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
                 } else {
                     Toast.makeText(this, "Please allow access to external storage, otherwise the screen capture can not be saved.", Toast.LENGTH_SHORT).show();
                 }
-            }*/
+            }
 
-
-
-    };}
+    };}*/
 
     @Override
     public ILocationProvider getLocationProvider(final LocationListener locationListener) {
@@ -177,9 +169,10 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
         return false;
     }
 
+
     @Override
-    protected StartupConfiguration.CameraPosition getCameraPosition() {
-        return StartupConfiguration.CameraPosition.DEFAULT;
+    protected CameraPosition getCameraPosition() {
+        return CameraPosition.DEFAULT;
     }
 /*/
     protected void saveScreenCaptureToExternalStorage(Bitmap screenCapture) {

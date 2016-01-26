@@ -209,7 +209,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
             try {
                 // load content via url in architectView, ensure '<script src="architect://architect.js"></script>' is part of this HTML file, have a look at wikitude.com's developer section for API references
-                this.architectView.load("file://assets/TrouveTonTram/index.html");
+                this.architectView.load(this.getARchitectWorldPath());
 
                 if (this.getInitialCullingDistanceMeters() != ArchitectViewHolderInterface.CULLING_DISTANCE_DEFAULT_METERS) {
                     // set the culling distance - meaning: the maximum distance to render geo-content
