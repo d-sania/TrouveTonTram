@@ -411,7 +411,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
      * @param userLocation the location of the user
      * @param numberOfPlaces number of places to load (at max)
      * @return POI information in JSONArray
-     */
+     */ // TODO MODIFIER LA METHODE POUR RECUPERER LES DONNEES TPG
     public static JSONArray getPoiInformation(final Location userLocation, final int numberOfPlaces) {
 
         if (userLocation==null) {
